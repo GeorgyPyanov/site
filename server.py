@@ -89,7 +89,3 @@ def finished():
     client.upload_sync(remote_path=f"check/{''.join(a)}.json",
                        local_path='data.json')
     return render_template('finish.html')
-
-
-if __name__ == '__main__':
-    app.run(port=8080, host='127.0.0.1')
