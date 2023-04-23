@@ -13,6 +13,8 @@ def sample_file_upload():
         name = request.form.get('name')
         email = request.form.get('email')
         r = {'name': name, 'email': email}
+        with open('data.json', 'w') as cat_file:
+            json.dump(r, cat_file)
         return redirect('/hero')
     return render_template('form.html')
 
@@ -89,3 +91,7 @@ def finished():
     client.upload_sync(remote_path=f"check/{''.join(a)}.json",
                        local_path='data.json')
     return render_template('finish.html')
+
+
+if __name__ == '__main__':
+    app.run(port=8080, host='127.0.0.1')
